@@ -1,18 +1,35 @@
+body{
+  background-color: #343a40;
+}
+body, html {
+  height: 100%;
+}
 .board-grid-container {
   display: grid;
-  background-color: white;
+  background-color: #020204;
   width: fit-content;
   height: fit-content;
 }
 .board-grid-item {
-  border: 1px solid rgba(0, 0, 0, 0.8);
+  border: 1px solid #009a22;
   width: fit-content;
   height: fit-content;
 }
 
 canvas {
-  background-color: white;
+  background-color: #020204;
 }
 canvas:hover {
-  background-color: #2196f3;
+  background-color: #36ba01;
 }
+
+.input {
+  width: 90px;
+}
+
+button {
+  border-radius: 0 !important;
+  margin: 1rem !important;
+}
+
+

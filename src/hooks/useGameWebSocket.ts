@@ -1,27 +1,35 @@
 import { useEffect, useState } from "react";
+import { useAppDispatch, useAppSelector } from ".";
+import { updateVerifyStatus } from "../redux/gameSlice";
 
 function useGameWebSocket() {
   const [pipes, setPipes] = useState<string[]>([]);
   const [gameSocket, setGameSocket] = useState<any>({});
+  const level = useAppSelector(store=>store.game.level)
+  const dispatch = useAppDispatch();
+
 
   useEffect(() => {
     const ws = new WebSocket("wss://hometask.eg1236.com/game-pipes/");
     ws.onopen = (event) => {
       ws.send("new 1");
     };
-    ws.onmessage = (event: Event | any) => {
-      const pipeString: string = event.data;
-      console.log(pipeString);
-      const pipeArray = pipeString.split("");
-      if (pipeArray.length > 70)
-        setPipes(
-          pipeArray.filter(
-            (p) => p.charCodeAt(0) !== 10 && p.charCodeAt(0) > 200
-          )
-        );
-    };
     setGameSocket(ws);
   }, []);
+
+  gameSocket.onmessage = (event: Event | any) => {
+    const pipeString: string = event.data;
+    console.log(pipeString);
+    const pipeArray = pipeString.split("");
+    if (pipeArray.length > 70)
+      setPipes(
+        pipeArray.filter(
+          (p) => p.charCodeAt(0) !== 10 && p.charCodeAt(0) > 200
+        )
+      );
+    if(pipeString.includes("verify:"))
+      dispatch(updateVerifyStatus(pipeString))
+  };
 
   const newLevel = (level: number) => {
     gameSocket.send(`new ${level}`);
@@ -31,7 +39,7 @@ function useGameWebSocket() {
     gameSocket.send("map");
   };
 
-  const rotatePipe = (x: number, y: number) => {
+  const rotate = (x: number, y: number) => {
     gameSocket.send(`rotate ${x} ${y}`);
   };
 
@@ -43,16 +51,28 @@ function useGameWebSocket() {
     gameSocket.send(`help`);
   };
 
-  const rotate = (x: number, y: number) => {
+  const rotatePipe = (x: number, y: number) => {
     console.log(x, y);
-    rotatePipe(x, y);
+    rotate(x, y);
     getPipesMap();
   };
 
-  const columns = 8;
-  const pipeCanvasSize = 80;
+  let columns = 8;
+  let pipeCanvasSize = 80;
+  if(level === 2){
+    columns = 25;
+    pipeCanvasSize = 40;
+  }
+  if (level === 3){
+    columns = 50;
+    pipeCanvasSize = 16;
+  }
+  if (level === 4){
+    columns = 200;
+    pipeCanvasSize = 16;
+  }
 
-  return {pipes, columns, pipeCanvasSize, newLevel, getPipesMap, rotate, verifyPipe, help};
+  return {pipes, columns, pipeCanvasSize, newLevel, getPipesMap, rotatePipe, verifyPipe, help};
 }
 
 export default useGameWebSocket;

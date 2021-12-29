@@ -1,5 +1,4 @@
 export const drawPipe = (context: CanvasRenderingContext2D, pipe: string) => {
-  console.log('aca')
   context.fillStyle = "#005b96 ";
   context.clearRect(0, 0, 80, 80);
   switch (pipe) {
