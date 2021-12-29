@@ -8,7 +8,7 @@ export const useCanvas = (draw: Function, pipe: string) => {
     const canvas = canvasRef.current
     const context = canvas!.getContext('2d')
     draw(context, pipe)
-  }, [draw])
+  }, [draw, pipe])
 
   return canvasRef
 
