@@ -42,6 +42,7 @@ function Home() {
       <Typography variant="h4" align="center">
         Pipes Game! - {pipes.length > 0 && "Level " + currentLevel}
       </Typography>
+      <hr/>
       <Box
         sx={{
           bgcolor: "primary",
