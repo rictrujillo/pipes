@@ -4,7 +4,8 @@ const Pipe = (props: UI.CanvasProps) => {
   const { pipe, pipeCanvasSize, handleClick, ...rest } = props;
   const drawPipe = (context: CanvasRenderingContext2D, pipe: string) => {
     const width = pipeCanvasSize;
-    context.fillStyle = "#00ff2b";
+    //context.fillStyle = "#00ff2b";
+    context.fillStyle = "#009a22";
     context.clearRect(0, 0, width, width);
     switch (pipe) {
       case "┏":
