@@ -41,7 +41,7 @@ function Home() {
   return (
     <div style={{ padding: "2rem" }}>
       <Typography variant="h4" align="center">
-        Pipes Game! - {pipes.length > 0 && "Level " + currentLevel + isDesktop}
+        Pipes Game! - {pipes.length > 0 && "Level " + currentLevel}
       </Typography>
       <hr />
       <Box
