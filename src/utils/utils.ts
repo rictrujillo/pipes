@@ -73,22 +73,22 @@ export const isPipePlugged = (
 ) => {
   if (pipe === "┏") {
     return (
-      isPluggedDown(y, columns, pipes, myIndex) ||
+      isPluggedDown(y, columns, pipes, myIndex) &&
       isPluggedRight(x, columns, pipes, myIndex)
     );
   } else if (pipe === "┓") {
     return (
-      isPluggedDown(y, columns, pipes, myIndex) ||
+      isPluggedDown(y, columns, pipes, myIndex) &&
       isPluggedLeft(x, pipes, myIndex)
     );
   } else if (pipe === "┛") {
     return (
-      isPluggedUp(y, pipes, columns, myIndex) ||
+      isPluggedUp(y, pipes, columns, myIndex) &&
       isPluggedLeft(x, pipes, myIndex)
     );
   } else if (pipe === "┗") {
     return (
-      isPluggedUp(y, pipes, columns, myIndex) ||
+      isPluggedUp(y, pipes, columns, myIndex) &&
       isPluggedRight(x, columns, pipes, myIndex)
     );
   } else if (pipe === "╸") {
@@ -99,43 +99,43 @@ export const isPipePlugged = (
     return isPluggedDown(y, columns, pipes, myIndex);
   } else if (pipe === "┃") {
     return (
-      isPluggedUp(y, pipes, columns, myIndex) ||
+      isPluggedUp(y, pipes, columns, myIndex) &&
       isPluggedDown(y, columns, pipes, myIndex)
     );
   } else if (pipe === "━") {
     return (
-      isPluggedLeft(x, pipes, myIndex) ||
+      isPluggedLeft(x, pipes, myIndex) &&
       isPluggedRight(x, columns, pipes, myIndex)
     );
   } else if (pipe === "┳") {
     return (
-      isPluggedLeft(x, pipes, myIndex) ||
-      isPluggedRight(x, columns, pipes, myIndex) ||
+      isPluggedLeft(x, pipes, myIndex) &&
+      isPluggedRight(x, columns, pipes, myIndex) &&
       isPluggedDown(y, columns, pipes, myIndex)
     );
   } else if (pipe === "┫") {
     return (
-      isPluggedLeft(x, pipes, myIndex) ||
-      isPluggedUp(y, pipes, columns, myIndex) ||
+      isPluggedLeft(x, pipes, myIndex) &&
+      isPluggedUp(y, pipes, columns, myIndex) &&
       isPluggedDown(y, columns, pipes, myIndex)
     );
   } else if (pipe === "┣") {
     return (
-      isPluggedRight(x, columns, pipes, myIndex) ||
-      isPluggedUp(y, pipes, columns, myIndex) ||
+      isPluggedRight(x, columns, pipes, myIndex) &&
+      isPluggedUp(y, pipes, columns, myIndex) &&
       isPluggedDown(y, columns, pipes, myIndex)
     );
   } else if (pipe === "┻") {
     return (
-      isPluggedRight(x, columns, pipes, myIndex) ||
-      isPluggedUp(y, pipes, columns, myIndex) ||
+      isPluggedRight(x, columns, pipes, myIndex) &&
+      isPluggedUp(y, pipes, columns, myIndex) &&
       isPluggedLeft(x, pipes, myIndex)
     );
   } else if (pipe === "╋") {
     return (
-      isPluggedLeft(x, pipes, myIndex) ||
-      isPluggedRight(x, columns, pipes, myIndex) ||
-      isPluggedUp(y, pipes, columns, myIndex) ||
+      isPluggedLeft(x, pipes, myIndex) &&
+      isPluggedRight(x, columns, pipes, myIndex) &&
+      isPluggedUp(y, pipes, columns, myIndex) &&
       isPluggedDown(y, columns, pipes, myIndex)
     );
   } else return false;
