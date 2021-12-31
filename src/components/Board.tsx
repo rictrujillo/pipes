@@ -1,3 +1,4 @@
+import { isPipePlugged } from "../utils/utils";
 import Pipe from "./Pipe";
 
 type boardProps = {
@@ -8,31 +9,37 @@ type boardProps = {
 };
 
 const Board = ({ pipes, columns, pipeCanvasSize, rotatePipe }: boardProps) => {
+  const getX = (myIndex: number) => {
+    return myIndex - Math.floor(myIndex / columns) * columns;
+  };
+
+  const getY = (myIndex: number) => {
+    return Math.floor(myIndex / columns);
+  };
+
   return (
     <div
       className="board-grid-container"
       style={{ gridTemplateColumns: "auto ".repeat(columns) }}
     >
-      {pipes.map((p, i) => (
-        <div
-          key={i}
-          className="board-grid-item"
-          style={{ height: pipeCanvasSize }}
-        >
-          <Pipe
-            pipeCanvasSize={pipeCanvasSize}
-            handleClick={() =>
-              rotatePipe(
-                i - Math.floor(i / columns) * columns,
-                Math.floor(i / columns)
-              )
-            }
-            pipe={p}
-            width={pipeCanvasSize}
-            height={pipeCanvasSize}
-          />
-        </div>
-      ))}
+      {pipes.map((p, i) => {
+        return (
+          <div
+            key={i}
+            className="board-grid-item"
+            style={{ height: pipeCanvasSize }}
+          >
+            <Pipe
+              pipeCanvasSize={pipeCanvasSize}
+              handleClick={() => rotatePipe(getX(i), getY(i))}
+              pipe={p}
+              width={pipeCanvasSize}
+              height={pipeCanvasSize}
+              isPlugged={isPipePlugged(p, pipes, i, columns, getX(i), getY(i))}
+            />
+          </div>
+        );
+      })}
     </div>
   );
 };

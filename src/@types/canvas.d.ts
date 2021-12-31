@@ -3,6 +3,7 @@ declare namespace UI {
     pipeCanvasSize: number;
     pipe: string;
     handleClick: Function;
+    isPlugged: boolean;
     [x: string]: any;
   }
 }

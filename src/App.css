@@ -11,7 +11,7 @@ body, html {
   height: fit-content;
 }
 .board-grid-item {
-  border: 1px solid #009a22;
+  border: 1px solid #009a2160;
   width: fit-content;
   height: fit-content;
 }
@@ -20,7 +20,7 @@ canvas {
   background-color: #020204;
 }
 canvas:hover {
-  background-color: #36ba01;
+  background-color: #c7ccc575;
 }
 
 .input {

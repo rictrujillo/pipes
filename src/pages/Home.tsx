@@ -42,11 +42,11 @@ function Home() {
       <Typography variant="h4" align="center">
         Pipes Game! - {pipes.length > 0 && "Level " + currentLevel}
       </Typography>
-      <hr/>
+      <hr />
       <Box
         sx={{
           bgcolor: "primary",
-          display: "flex",
+          display: currentLevel>2?"block":"flex",
           justifyContent: "space-evenly",
           alignContent: "center",
           alignItems: "center",
@@ -92,12 +92,17 @@ function Home() {
           </Grid>
         </Box>
         <Box>
-          <Board
-            pipes={pipes}
-            columns={columns}
-            rotatePipe={rotatePipe}
-            pipeCanvasSize={pipeCanvasSize}
-          />
+          <Grid
+            container
+            justifyContent={"center"}
+          >
+            <Board
+              pipes={pipes}
+              columns={columns}
+              rotatePipe={rotatePipe}
+              pipeCanvasSize={pipeCanvasSize}
+            />
+          </Grid>
         </Box>
       </Box>
 

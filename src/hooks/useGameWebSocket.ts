@@ -65,7 +65,7 @@ function useGameWebSocket() {
   }
   if (level === 3){
     columns = 50;
-    pipeCanvasSize = 16;
+    pipeCanvasSize = 24;
   }
   if (level === 4){
     columns = 200;
