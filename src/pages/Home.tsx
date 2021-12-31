@@ -1,4 +1,4 @@
-import { Button, Grid, Slider, Typography } from "@mui/material";
+import { Button, Grid, Slider, Typography, useMediaQuery } from "@mui/material";
 import Box from "@mui/material/Box";
 import { useState } from "react";
 import Board from "../components/Board";
@@ -15,6 +15,7 @@ function Home() {
   const verifyStatus = useAppSelector((store) => store.game.verifyStatus);
   const [isVerifyModalOpen, setIsVerifyModalOpen] = useState<boolean>(false);
   const dispatch = useAppDispatch();
+  const isDesktop = useMediaQuery("(min-width:1400px)");
 
   const {
     pipes,
@@ -40,13 +41,13 @@ function Home() {
   return (
     <div style={{ padding: "2rem" }}>
       <Typography variant="h4" align="center">
-        Pipes Game! - {pipes.length > 0 && "Level " + currentLevel}
+        Pipes Game! - {pipes.length > 0 && "Level " + currentLevel + isDesktop}
       </Typography>
       <hr />
       <Box
         sx={{
           bgcolor: "primary",
-          display: currentLevel>2?"block":"flex",
+          display: currentLevel > 2 || !isDesktop ? "block" : "flex",
           justifyContent: "space-evenly",
           alignContent: "center",
           alignItems: "center",
@@ -92,10 +93,7 @@ function Home() {
           </Grid>
         </Box>
         <Box>
-          <Grid
-            container
-            justifyContent={"center"}
-          >
+          <Grid container justifyContent={"center"}>
             <Board
               pipes={pipes}
               columns={columns}
