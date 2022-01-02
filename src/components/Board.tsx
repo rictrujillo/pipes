@@ -24,20 +24,17 @@ const Board = ({ pipes, columns, pipeCanvasSize, rotatePipe }: boardProps) => {
     >
       {pipes.map((p, i) => {
         return (
-          <div
+          <Pipe
             key={i}
             className="board-grid-item"
             style={{ height: pipeCanvasSize }}
-          >
-            <Pipe
-              pipeCanvasSize={pipeCanvasSize}
-              handleClick={() => rotatePipe(getX(i), getY(i))}
-              pipe={p}
-              width={pipeCanvasSize}
-              height={pipeCanvasSize}
-              isPlugged={isPipePlugged(p, pipes, i, columns, getX(i), getY(i))}
-            />
-          </div>
+            pipeCanvasSize={pipeCanvasSize}
+            handleClick={() => rotatePipe(getX(i), getY(i))}
+            pipe={p}
+            width={pipeCanvasSize}
+            height={pipeCanvasSize}
+            isPlugged={isPipePlugged(p, pipes, i, columns, getX(i), getY(i))}
+          />
         );
       })}
     </div>
