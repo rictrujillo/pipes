@@ -97,6 +97,8 @@ export const isPipePlugged = (
     return isPluggedRight(x, columns, pipes, myIndex);
   } else if (pipe === "╻") {
     return isPluggedDown(y, columns, pipes, myIndex);
+  } else if (pipe === "╹") {
+    return isPluggedUp(y, pipes, columns, myIndex);
   } else if (pipe === "┃") {
     return (
       isPluggedUp(y, pipes, columns, myIndex) &&
