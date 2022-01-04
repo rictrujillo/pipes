@@ -1,5 +1,13 @@
 import { pipesAtDown, pipesAtLeft, pipesAtRight, pipesAtUp } from "./constants";
 
+export const getX = (myIndex: number, columns: number) => {
+  return myIndex - Math.floor(myIndex / columns) * columns;
+};
+
+export const getY = (myIndex: number, columns: number) => {
+  return Math.floor(myIndex / columns);
+};
+
 const isAtTop = (y: number) => {
   return y === 0;
 };

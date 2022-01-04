@@ -1,22 +1,15 @@
-import { isPipePlugged } from "../utils/utils";
+import { getX, getY, isPipePlugged } from "../utils/utils";
 import Pipe from "./Pipe";
 
 type boardProps = {
   pipes: string[];
   columns: number;
   pipeCanvasSize: number;
-  rotatePipe: Function;
+  rotatePipe: (x:number, y:number)=>void;
 };
 
 const Board = ({ pipes, columns, pipeCanvasSize, rotatePipe }: boardProps) => {
-  const getX = (myIndex: number) => {
-    return myIndex - Math.floor(myIndex / columns) * columns;
-  };
-
-  const getY = (myIndex: number) => {
-    return Math.floor(myIndex / columns);
-  };
-
+  
   return (
     <div
       className="board-grid-container"
@@ -29,15 +22,15 @@ const Board = ({ pipes, columns, pipeCanvasSize, rotatePipe }: boardProps) => {
             className="board-grid-item"
             style={{ height: pipeCanvasSize }}
             pipeCanvasSize={pipeCanvasSize}
-            handleClick={() => rotatePipe(getX(i), getY(i))}
+            handleClick={() => rotatePipe(getX(i, columns), getY(i, columns))}
             pipe={p}
             width={pipeCanvasSize}
             height={pipeCanvasSize}
-            isPlugged={isPipePlugged(p, pipes, i, columns, getX(i), getY(i))}
+            isPlugged={isPipePlugged(p, pipes, i, columns, getX(i, columns), getY(i, columns))}
           />
         );
       })}
-    </div>
+      </div>
   );
 };
 
