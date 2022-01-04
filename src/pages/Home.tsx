@@ -72,6 +72,7 @@ function Home() {
               value={selectedLevel}
               onChange={(event, newValue) => {
                 if (newValue < 4) setSelectedLevel(newValue as number);
+                else alert("I have restricted the UI to play level 4, 5 or 6 to prevent this tab to freeze due to enormous amount of memory to render the over 40,000 pipes on the screen.")
               }}
             />
           </Grid>
