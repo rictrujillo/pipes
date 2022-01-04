@@ -48,9 +48,9 @@ Worth to mention that I'm not expert in canvas but know how to use it and I like
     export const pipesAtLeft = ["┏", "┗", "╺", "━", "┳", "┣", "┻", "╋"];
     ```
 3. Used some custom hooks, one of them for abstracting the connection to the web socket and use it in the game and access the important values and functions (methods) for playing.  
-4. Used a Redux toolkit slice (less boylerplate than plain redux) for handling the state of the game.
+4. Used a Redux Toolkit slice (less boylerplate than plain redux) for handling the state of the game.
 5. Used custom types (@types) for better readability and demonstration of use.
-6. Structured the solution into Pages, Components, Hooks, Utils, Redux and Types. 
+6. Structured the solution into Pages, Components, Hooks, Utils, Redux and Types in a React project and a few material UI components. 
 
 
 ### To launch the solution use `npm start` (after cloning this repo).
