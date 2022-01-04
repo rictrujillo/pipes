@@ -8,7 +8,7 @@ Solved by Ricardo Trujillo the las week of December of 2021.
 ## Known limitations
 This solution is a UI for the backend commands, is manual only with some "partial asistance" by providing a different color of pipe when all ends of the pipe are connected, thus **only level 1 to 3 are available** level 3 to 4 become laggy. 
 
-Worth to mention that I'm not expert in canvas but know how to use it and like the math involved in it's use.
+Worth to mention that I'm not expert in canvas but know how to use it and I like the math involved in it's use.
 
 ![image](https://user-images.githubusercontent.com/8483985/147886000-40e6f3e8-1b95-41ae-a9a0-21834e971257.png)
 
