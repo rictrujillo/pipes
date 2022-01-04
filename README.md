@@ -14,13 +14,13 @@ This solution is a UI for the backend commands, is manual only with some "partia
 
 1. Used an array (string) of all the characters of the pipe map, I used basic arithmetic to come up with the corresponding [x][y] coordinates. 
    ```
-      const getX = (myIndex: number) => {
-        return myIndex - Math.floor(myIndex / columns) * columns;
-      };
+    export const getX = (myIndex: number, columns: number) => {
+      return myIndex - Math.floor(myIndex / columns) * columns;
+    };
 
-      const getY = (myIndex: number) => {
-        return Math.floor(myIndex / columns);
-      };
+    export const getY = (myIndex: number, columns: number) => {
+      return Math.floor(myIndex / columns);
+    };
    ```
 2. Used custom functions to identify if a pipe is connected in all it's ends by getting the contiguous pipes, this functions were defined in a way that optimized it's use across all the validation of connection process. 
    ```
